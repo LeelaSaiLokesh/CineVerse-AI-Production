@@ -22,7 +22,11 @@ models/*.faiss
 .env
 .env.local
 .env.production
+.env.*
 
 # ─── OS ──────────────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
+
+datasets/*.csv
+.runtime
