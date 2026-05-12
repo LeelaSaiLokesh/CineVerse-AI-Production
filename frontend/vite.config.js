@@ -4,9 +4,13 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+
   resolve: {
-    alias: { '@': path.resolve(__dirname, './src') },
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
   },
+
   server: {
     port: 5173,
     proxy: {
@@ -16,18 +20,10 @@ export default defineConfig({
       },
     },
   },
+
   build: {
     outDir: 'dist',
     sourcemap: false,
     chunkSizeWarningLimit: 1600,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          motion: ['framer-motion'],
-          query: ['@tanstack/react-query'],
-        },
-      },
-    },
   },
 });
