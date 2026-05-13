@@ -1,32 +1,6 @@
-# ─── Project ─────────────────────────────────────────────────────────────────
-node_modules/
-dist/
-build/
-.cache/
-*.log
-
-# ─── Python ──────────────────────────────────────────────────────────────────
-__pycache__/
-*.py[cod]
-*.pyo
-.venv/
-venv/
-env/
-*.egg-info/
-
-# ─── ML Models (generated) ────────────────────────────────────────────────────
-models/*.pkl
-models/*.faiss
-
-# ─── Environment ─────────────────────────────────────────────────────────────
+node_modules
 .env
-.env.local
-.env.production
-.env.*
-
-# ─── OS ──────────────────────────────────────────────────────────────────────
+dist
+build
+.vscode
 .DS_Store
-Thumbs.db
-
-datasets/*.csv
-.runtime
