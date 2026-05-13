@@ -11,34 +11,41 @@ const GEMINI_KEY = process.env.GEMINI_API_KEY;
    Gemini AI Call
 ────────────────────────────────────────────────────────────── */
 async function callGemini(prompt) {
-  const response = await axios.post(
-    `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=${GEMINI_KEY}`,
-    {
-      contents: [
-        {
-          parts: [{ text: prompt }],
+  try {
+    const response = await axios.post(
+      `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${GEMINI_KEY}`,
+      {
+        contents: [
+          {
+            parts: [
+              {
+                text: prompt,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
         },
-      ],
 
-      generationConfig: {
-        temperature: 0.8,
-        topP: 0.9,
-        maxOutputTokens: 1024,
-      },
-    },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
+        timeout: 30000,
+      }
+    );
 
-      timeout: 30000,
-    }
-  );
+    const text =
+      response.data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
 
-  const text =
-    response.data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    return text;
+  } catch (error) {
+    console.error(
+      '\n❌ GEMINI API ERROR:',
+      error.response?.data || error.message
+    );
 
-  return text;
+    throw error;
+  }
 }
 
 /* ──────────────────────────────────────────────────────────────
