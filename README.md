@@ -14,7 +14,7 @@
 [![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel)](https://vercel.com/)
 [![Render](https://img.shields.io/badge/Render-Backend-46E3B7?style=for-the-badge&logo=render)](https://render.com/)
 
-**[🌐 Live Demo](https://cineverse-ai-production.vercel.app)** · **[🔧 Backend API](https://cineverse-ai-production.onrender.com/api/health)**
+**[🌐 Live Demo](https://cine-verse-ai-production.vercel.app/)** · **[🔧 Backend API](https://cineverse-ai-production.onrender.com/api/health)**
 
 </div>
 
