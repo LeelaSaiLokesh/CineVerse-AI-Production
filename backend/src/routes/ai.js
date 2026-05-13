@@ -12,7 +12,6 @@ const GEMINI_KEY = process.env.GEMINI_API_KEY;
 ────────────────────────────────────────────────────────────── */
 async function callGemini(prompt) {
   const response = await axios.post(
-    // ✅ FIXED MODEL NAME
     `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_KEY}`,
     {
       contents: [
@@ -20,6 +19,7 @@ async function callGemini(prompt) {
           parts: [{ text: prompt }],
         },
       ],
+
       generationConfig: {
         temperature: 0.8,
         topP: 0.9,
@@ -30,6 +30,7 @@ async function callGemini(prompt) {
       headers: {
         'Content-Type': 'application/json',
       },
+
       timeout: 30000,
     }
   );
@@ -51,6 +52,7 @@ async function searchTMDB(title) {
         query: title,
         include_adult: false,
       },
+
       timeout: 10000,
     });
 
@@ -76,7 +78,8 @@ router.post('/chat', async (req, res) => {
 
     if (!GEMINI_KEY) {
       return res.status(500).json({
-        error: 'GEMINI_API_KEY missing in backend environment variables',
+        error:
+          'GEMINI_API_KEY missing in backend environment variables',
       });
     }
 
@@ -106,6 +109,7 @@ MOVIES:
     /* ─────────────────────────────────────────────
        Parse AI Response
     ───────────────────────────────────────────── */
+
     const replyMatch = raw.match(
       /REPLY:\s*([\s\S]*?)(?=MOVIES:|$)/i
     );
@@ -129,6 +133,7 @@ MOVIES:
     }
 
     /* fallback quoted titles */
+
     if (!titles.length) {
       const quoted = raw.match(/"([^"]+)"/g);
 
@@ -144,6 +149,7 @@ MOVIES:
     /* ─────────────────────────────────────────────
        Fetch TMDB Data
     ───────────────────────────────────────────── */
+
     const movieResults = await Promise.all(
       titles.map(searchTMDB)
     );
