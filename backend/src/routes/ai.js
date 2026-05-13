@@ -11,48 +11,39 @@ const GEMINI_KEY = process.env.GEMINI_API_KEY;
    Gemini AI Call
 ────────────────────────────────────────────────────────────── */
 async function callGemini(prompt) {
-  try {
-    const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
-      {
-        contents: [
-          {
-            parts: [
-              {
-                text: prompt,
-              },
-            ],
-          },
-        ],
-
-        generationConfig: {
-          temperature: 0.8,
-          topP: 0.9,
-          maxOutputTokens: 1024,
+  const response = await axios.post(
+    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
+    {
+      contents: [
+        {
+          parts: [
+            {
+              text: prompt,
+            },
+          ],
         },
+      ],
+
+      generationConfig: {
+        temperature: 0.8,
+        topP: 0.9,
+        maxOutputTokens: 1024,
       },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
 
-        timeout: 30000,
-      }
-    );
+      timeout: 30000,
+    }
+  );
 
-    return (
-      response.data?.candidates?.[0]?.content?.parts?.[0]?.text || ''
-    );
-  } catch (error) {
-    console.error(
-      '\n❌ GEMINI API ERROR:',
-      error.response?.data || error.message
-    );
+  const text =
+    response.data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
 
-    throw error;
-  }
+  return text;
 }
-
 /* ──────────────────────────────────────────────────────────────
    TMDB Search
 ────────────────────────────────────────────────────────────── */
