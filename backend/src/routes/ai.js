@@ -13,7 +13,7 @@ const GEMINI_KEY = process.env.GEMINI_API_KEY;
 async function callGemini(prompt) {
   try {
     const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${GEMINI_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
       {
         contents: [
           {
@@ -24,6 +24,12 @@ async function callGemini(prompt) {
             ],
           },
         ],
+
+        generationConfig: {
+          temperature: 0.8,
+          topP: 0.9,
+          maxOutputTokens: 1024,
+        },
       },
       {
         headers: {
@@ -34,10 +40,9 @@ async function callGemini(prompt) {
       }
     );
 
-    const text =
-      response.data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-
-    return text;
+    return (
+      response.data?.candidates?.[0]?.content?.parts?.[0]?.text || ''
+    );
   } catch (error) {
     console.error(
       '\n❌ GEMINI API ERROR:',
