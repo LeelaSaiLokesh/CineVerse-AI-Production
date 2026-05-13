@@ -129,6 +129,36 @@ CineVerse AI
 ```
 
 ---
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home](screenshots/home.png)
+
+---
+
+### 🎬 Browse Movies
+![Browse](screenshots/browse.png)
+
+---
+
+### 🤖 AI Chat
+![AI Chat](screenshots/ai-chat.png)
+
+---
+
+### 🔐 Login Page
+![Login](screenshots/login.png)
+
+---
+
+### 🎥 Movie Detail
+![Movie Detail](screenshots/movie-detail.png)
+
+---
+
+### ⭐ Watchlist
+![Watchlist](screenshots/watchlist.png)
+---
 
 ## 🚀 Quick Start
 
