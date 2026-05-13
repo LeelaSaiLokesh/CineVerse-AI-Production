@@ -1,52 +1,131 @@
+<div align="center">
+
 # 🎬 CineVerse AI
 
-> **Netflix-grade AI-powered movie discovery platform** — built as a production-quality portfolio project.
+### AI-Powered OTT Movie Discovery Platform
 
-A full-stack OTT-style application featuring intelligent recommendations, multilingual cinema support, sentiment analysis, and a cinematic dark-mode UI — powered by React, Node.js/Express, Python FastAPI, and the TMDB API.
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-4-000000?style=for-the-badge&logo=express)](https://expressjs.com/)
+[![Firebase](https://img.shields.io/badge/Firebase-Auth-FFCA28?style=for-the-badge&logo=firebase)](https://firebase.google.com/)
+[![Gemini](https://img.shields.io/badge/Gemini-AI-8E75B2?style=for-the-badge&logo=google)](https://ai.google.dev/)
+[![TMDB](https://img.shields.io/badge/TMDB-API-01D277?style=for-the-badge)](https://www.themoviedb.org/)
+[![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel)](https://vercel.com/)
+[![Render](https://img.shields.io/badge/Render-Backend-46E3B7?style=for-the-badge&logo=render)](https://render.com/)
+
+**[🌐 Live Demo](https://cineverse-ai-production.vercel.app)** · **[🔧 Backend API](https://cineverse-ai-production.onrender.com/api/health)**
+
+</div>
 
 ---
 
-## ✨ Feature Highlights
+## 🌟 What is CineVerse AI?
 
-| Category | Features |
+CineVerse AI is a **production-grade, full-stack OTT-style movie discovery platform** that combines the power of **Google Gemini AI**, **TMDB's movie database**, and **Firebase Authentication** into a cinematic Netflix-inspired experience.
+
+> Ask in natural language: *"Suggest emotional Telugu thrillers"* → Get AI-curated movie cards, instantly.
+
+---
+
+## ✨ Features
+
+| Feature | Description |
 |---|---|
-| 🎬 **Discovery** | Hero carousel, trending, top-rated, now-playing, upcoming |
-| 🌍 **Languages** | Telugu, Hindi, Tamil, Malayalam, Kannada, Hollywood |
-| 🎭 **Genres** | Action, Drama, Thriller, Romance, Horror, Sci-Fi + more |
-| 🔍 **Smart Search** | Debounced search with quality filters (no albums/junk), suggestions dropdown |
-| 🎞️ **Movie Detail** | Cinematic backdrop hero, trailers, full cast, reviews, director panel |
-| 🤖 **AI Engine** | TF-IDF recommendations → "More Like This" powered by ML |
-| 📊 **Sentiment** | AI-powered review sentiment analysis via FastAPI |
-| 🔖 **Watchlist** | localStorage-backed save/remove with animated count badge |
-| 🎭 **Actor Profiles** | Actor modal with filmography on any cast member click |
-| ⚡ **Performance** | Code-split lazy routes, React Query cache, image shimmer loading |
-| 🛡️ **Resilience** | React Error Boundaries, TMDB retry logic, graceful degradation |
+| 🤖 **AI Chat Recommender** | Natural language movie recommendations via Google Gemini |
+| 🔐 **Firebase Authentication** | Email/password + Google OAuth with persistent session |
+| 🎬 **Cinematic Hero Carousel** | Auto-sliding hero with backdrop blur and animated overlays |
+| 🔖 **Smart Watchlist** | localStorage persistence with real-time badge counter |
+| 🎭 **Trailer Modal** | YouTube iframe with cinematic overlay and ESC support |
+| 🌍 **Multi-language Browse** | Telugu, Hindi, Tamil, Malayalam, Kannada, English, Korean |
+| 🎭 **Genre & Category Filters** | 8 genres × 3 categories with paginated grid |
+| 🔍 **Live Search + Suggestions** | Debounced typeahead with poster previews |
+| 👤 **Actor Modal** | Full actor filmography on click |
+| 🧠 **AI Sentiment Panel** | Movie sentiment analysis via AI engine |
+| 📱 **Mobile-First Responsive** | Optimized for all screen sizes |
+| ⚡ **Performance Optimized** | Lazy loading, code splitting, React Query caching |
+| 💀 **Loading Skeletons** | Shimmer placeholders for every data state |
+| 🛡️ **Error Boundaries** | Route-level error recovery with retry |
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 19** + **Vite 8** — fast HMR development
+- **Tailwind CSS 3** — utility-first styling
+- **Framer Motion** — cinematic animations
+- **React Query (TanStack)** — server state + caching
+- **React Router v7** — client-side routing with lazy loading
+- **Firebase SDK** — authentication
+- **React Hot Toast** — toast notifications
+- **React Icons** — icon library
+
+### Backend
+- **Node.js + Express 4** — REST API server
+- **TMDB API** — movie data source (500K+ titles)
+- **Google Gemini 1.5 Flash** — AI recommendation engine
+- **Helmet + CORS + Rate Limiting** — production security
+- **node-cache** — in-memory API response caching
+- **Morgan + Compression** — logging and gzip
+
+### Infrastructure
+- **Vercel** — frontend CDN deployment
+- **Render** — backend auto-scaling deployment
+- **Firebase** — Google Auth + user management
 
 ---
 
 ## 🏗️ Architecture
 
 ```
-CineVerse-AI/
-├── frontend/          # React + Vite + TailwindCSS + Framer Motion
-│   ├── src/
-│   │   ├── pages/     # Home, Browse, Search, MovieDetail, Watchlist, NotFound
-│   │   ├── components/# Navbar, MovieCard, HeroCarousel, MovieRow, TrailerModal, ActorModal…
-│   │   ├── hooks/     # useWatchlist, useDebounce
-│   │   └── services/  # api.js (Axios + interceptors)
-│   └── tailwind.config.js
+CineVerse AI
+├── frontend/                    # React + Vite SPA
+│   └── src/
+│       ├── components/          # Reusable UI components
+│       │   ├── Navbar.jsx       # Sticky nav with auth + search
+│       │   ├── HeroCarousel.jsx # Auto-sliding hero section
+│       │   ├── MovieCard.jsx    # Hover-animated poster card
+│       │   ├── MovieRow.jsx     # Horizontal scrollable row
+│       │   ├── TrailerModal.jsx # YouTube trailer overlay
+│       │   ├── ActorModal.jsx   # Actor details + filmography
+│       │   ├── AuthModal.jsx    # Login / Signup modal
+│       │   ├── SentimentPanel.jsx # AI sentiment display
+│       │   ├── LoadingSkeleton.jsx # Shimmer loaders
+│       │   └── ErrorBoundary.jsx # Route-level error recovery
+│       ├── pages/               # Route-level page components
+│       │   ├── Home.jsx         # Hero + content rows
+│       │   ├── Browse.jsx       # Filter grid + pagination
+│       │   ├── Search.jsx       # Search results page
+│       │   ├── MovieDetail.jsx  # Full detail + tabs + recs
+│       │   ├── Watchlist.jsx    # Saved movies grid
+│       │   ├── AiChat.jsx       # AI Chat recommender
+│       │   └── NotFound.jsx     # 404 page
+│       ├── context/             # React contexts
+│       │   └── AuthContext.jsx  # Firebase auth state
+│       ├── hooks/               # Custom React hooks
+│       │   ├── WatchlistContext.jsx # Watchlist state + actions
+│       │   ├── useWatchlist.js  # Watchlist hook (re-export)
+│       │   └── useDebounce.js   # Input debouncing
+│       └── services/            # API layer
+│           ├── api.js           # Axios client + all endpoints
+│           └── firebase.js      # Firebase app init
 │
-├── backend/           # Node.js + Express
-│   ├── src/
-│   │   ├── routes/    # movies, search, discover, trending, actors, recommendations
-│   │   ├── services/  # tmdb.js (cached fetch + retry)
-│   │   └── app.js     # CORS, Helmet, Morgan, rate-limit
-│   └── server.js
+├── backend/                     # Node.js + Express API
+│   └── src/
+│       ├── routes/
+│       │   ├── movies.js        # Movie detail + videos
+│       │   ├── search.js        # Search + suggestions
+│       │   ├── discover.js      # Home sections + browse
+│       │   ├── trending.js      # Trending hero
+│       │   ├── actors.js        # Actor details
+│       │   ├── recommendations.js # AI recommendation engine
+│       │   └── ai.js            # Gemini chat endpoint
+│       ├── services/            # Shared service modules
+│       └── app.js               # Express app + middleware
 │
-└── ai-engine/         # Python FastAPI
-    ├── main.py        # FastAPI app + endpoints
-    ├── recommender.py # TF-IDF recommendation engine
-    └── models/        # Cached TF-IDF matrix (auto-generated)
+└── ai-engine/                   # Python sentiment analysis
+    └── (FastAPI + ML models)
 ```
 
 ---
@@ -54,199 +133,166 @@ CineVerse-AI/
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+
-- Python 3.10+
-- TMDB API key → [Get one free](https://www.themoviedb.org/settings/api)
+- Node.js ≥ 18
+- Git
+- TMDB API key (free at [themoviedb.org](https://www.themoviedb.org/))
+- Gemini API key (free at [aistudio.google.com](https://aistudio.google.com/))
+- Firebase project (free at [console.firebase.google.com](https://console.firebase.google.com/))
 
-### 1. Clone & Install
-
+### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/CineVerse-AI.git
-cd CineVerse-AI
-
-# Install backend deps
-cd backend && npm install && cd ..
-
-# Install frontend deps
-cd frontend && npm install && cd ..
-
-# Install AI engine deps
-cd ai-engine && pip install -r requirements.txt && cd ..
+git clone https://github.com/LeelaSaiLokesh/CineVerse-AI-Production.git
+cd CineVerse-AI-Production
 ```
 
-### 2. Configure Environment
-
-```bash
-# Backend
-cp backend/.env.example backend/.env
-# → Add your TMDB_API_KEY
-
-# Frontend
-cp frontend/.env.example frontend/.env
-# → VITE_API_URL is already set to http://localhost:5000/api
-
-# AI Engine
-cp ai-engine/.env.example ai-engine/.env
-# → Add your TMDB_API_KEY
-```
-
-### 3. Start All Services
-
-**Terminal 1 — Backend:**
+### 2. Backend setup
 ```bash
 cd backend
-npm run dev
-# → http://localhost:5000
+npm install
 ```
 
-**Terminal 2 — Frontend:**
+Create `backend/.env`:
+```env
+PORT=5000
+NODE_ENV=development
+TMDB_API_KEY=your_tmdb_api_key
+TMDB_BASE_URL=https://api.themoviedb.org/3
+GEMINI_API_KEY=your_gemini_api_key
+FRONTEND_URL=http://localhost:5173
+```
+
+```bash
+npm run dev   # starts on http://localhost:5000
+```
+
+### 3. Frontend setup
 ```bash
 cd frontend
-npm run dev
-# → http://localhost:5173
+npm install
 ```
 
-**Terminal 3 — AI Engine (optional):**
+Create `frontend/.env`:
+```env
+VITE_API_BASE_URL=http://localhost:5000
+
+# Firebase (optional — auth works in demo mode without it)
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
 ```bash
-cd ai-engine
-uvicorn main:app --reload --port 8000
-# First run: ~2 min to build TF-IDF matrix
-# → http://localhost:8000
+npm run dev   # starts on http://localhost:5173
 ```
 
 ---
 
-## 📡 API Reference
+## 🔑 Environment Variables
 
-### Backend (`http://localhost:5000/api`)
-
-| Method | Endpoint | Description |
+### Frontend (`frontend/.env`)
+| Variable | Required | Description |
 |---|---|---|
-| GET | `/health` | Health check |
-| GET | `/trending/hero` | Hero carousel movies |
-| GET | `/discover/home-sections` | All homepage sections (1 call) |
-| GET | `/discover/language/:lang` | Movies by language |
-| GET | `/discover/genre/:genre` | Movies by genre |
-| GET | `/discover/top-rated` | Top rated movies |
-| GET | `/discover/now-playing` | Now playing |
-| GET | `/discover/upcoming` | Upcoming releases |
-| GET | `/search?q=&page=` | Multi-search (quality filtered) |
-| GET | `/search/suggestions?q=` | Autocomplete suggestions |
-| GET | `/movies/:id` | Full movie details + cast + trailers |
-| GET | `/movies/:id/recommendations` | TMDB recommendations |
-| GET | `/actors/search?q=` | Actor search |
-| GET | `/actors/:id` | Actor profile + credits |
-| GET | `/recommendations/:id` | AI recommendations |
+| `VITE_API_BASE_URL` | ✅ Yes | Backend base URL |
+| `VITE_FIREBASE_API_KEY` | Optional | Firebase project API key |
+| `VITE_FIREBASE_AUTH_DOMAIN` | Optional | Firebase auth domain |
+| `VITE_FIREBASE_PROJECT_ID` | Optional | Firebase project ID |
 
-### AI Engine (`http://localhost:8000`)
-
-| Method | Endpoint | Description |
+### Backend (`backend/.env`)
+| Variable | Required | Description |
 |---|---|---|
-| GET | `/` | Health check |
-| GET | `/recommendations/{movie_id}` | TF-IDF recommendations |
-| POST | `/recommendations/by-title` | Recommend by title string |
-| GET | `/sentiment/movie/{movie_id}` | Review sentiment analysis |
+| `TMDB_API_KEY` | ✅ Yes | TMDB API v3 key |
+| `GEMINI_API_KEY` | Optional | Enables AI Chat feature |
+| `PORT` | Optional | Server port (default: 5000) |
 
 ---
 
-## 🌐 Deployment
+## 🔥 Firebase Authentication Setup
 
-### Frontend → Vercel
+1. Go to [Firebase Console](https://console.firebase.google.com/)
+2. Create a new project
+3. Enable **Authentication** → Sign-in methods → Enable **Email/Password** and **Google**
+4. Go to **Project Settings** → **General** → scroll to **Your apps** → Add a **Web app**
+5. Copy the config values to your `frontend/.env`
 
+---
+
+## 🤖 AI Chat Setup
+
+1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Create a free API key
+3. Add to `backend/.env` as `GEMINI_API_KEY`
+4. Restart the backend server
+
+**Example queries:**
+- *"Suggest emotional Telugu thrillers"*
+- *"Best Korean revenge movies with great twists"*
+- *"Top-rated Hindi romantic dramas from 2022"*
+- *"Mind-bending psychological sci-fi films"*
+
+---
+
+## 🌐 API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/health` | Health check |
+| `GET` | `/api/trending/hero` | Hero carousel movies |
+| `GET` | `/api/discover/home-sections` | All home page sections |
+| `GET` | `/api/discover/language/:lang` | Movies by language |
+| `GET` | `/api/discover/genre/:genre` | Movies by genre |
+| `GET` | `/api/movies/:id` | Full movie details |
+| `GET` | `/api/search?q=` | Movie search |
+| `GET` | `/api/search/suggestions?q=` | Typeahead suggestions |
+| `GET` | `/api/actors/:id` | Actor + filmography |
+| `GET` | `/api/recommendations/:id` | AI-based recommendations |
+| `POST` | `/api/ai/chat` | Gemini AI chat recommender |
+
+---
+
+## 📦 Deployment
+
+### Vercel (Frontend)
 ```bash
 cd frontend
 npm run build
-# Deploy dist/ folder to Vercel
-# Set VITE_API_URL to your Railway/Render backend URL
+# Deploy dist/ to Vercel
+# Set all VITE_* env vars in Vercel dashboard
 ```
 
-### Backend → Railway / Render
-
-```bash
-# Set environment variables in dashboard:
-TMDB_API_KEY=your_key
-NODE_ENV=production
-PORT=5000
-```
-
-### AI Engine → Railway / Render
-
-```bash
-# Start command:
-uvicorn main:app --host 0.0.0.0 --port $PORT
-# Set TMDB_API_KEY in dashboard
-```
+### Render (Backend)
+- Connect GitHub repo
+- Root directory: `backend`
+- Start command: `npm start`
+- Add all env vars in Render dashboard
 
 ---
 
-## 🔧 Tech Stack
+## 🎯 Performance
 
-### Frontend
-| Library | Purpose |
-|---|---|
-| React 18 + Vite | Core framework + fast HMR build |
-| TailwindCSS | Utility-first styling |
-| Framer Motion | Smooth animations |
-| React Query | Server-state caching + auto-refetch |
-| React Router v6 | Client-side routing |
-| Axios | HTTP with interceptors |
-| React Hot Toast | Toast notifications |
-| React Helmet Async | SEO meta tags |
-| React Icons | Icon library |
-
-### Backend
-| Library | Purpose |
-|---|---|
-| Express.js | HTTP server + routing |
-| Axios | TMDB API client |
-| node-cache | In-memory API response cache |
-| helmet | Security headers |
-| cors | Cross-origin resource sharing |
-| express-rate-limit | Request rate limiting |
-| morgan | HTTP request logging |
-
-### AI Engine
-| Library | Purpose |
-|---|---|
-| FastAPI | Python async HTTP framework |
-| scikit-learn | TF-IDF vectorizer |
-| pandas | Data manipulation |
-| requests | TMDB API client |
-| joblib | Model persistence |
+- **Code splitting** — each page is a separate JS chunk (lazy loaded)
+- **React Query caching** — 5-minute stale time, 10-minute cache
+- **Image lazy loading** — `loading="lazy"` + `decoding="async"`
+- **Debounced search** — 300ms debounce prevents excessive API calls
+- **Gzip compression** — enabled on backend via `compression` middleware
+- **Rate limiting** — 500 req/15min per IP to prevent abuse
 
 ---
 
-## 📁 Key Files
+## 👨‍💻 Author
 
-| File | Purpose |
-|---|---|
-| `backend/src/services/tmdb.js` | Cached TMDB fetch with retry + graceful degradation |
-| `backend/src/routes/discover.js` | All content discovery endpoints |
-| `backend/src/app.js` | Express app: CORS, security, rate limiting |
-| `frontend/src/services/api.js` | Axios instance with interceptors + helper functions |
-| `frontend/src/hooks/useWatchlist.js` | localStorage watchlist with toast notifications |
-| `frontend/src/pages/MovieDetail.jsx` | Cinematic movie page with tabs, cast, trailers |
-| `ai-engine/recommender.py` | TF-IDF recommendation engine |
+**Leela Sai Lokesh**
+
+Built as a production-grade portfolio project demonstrating full-stack engineering with React, Node.js, Firebase Auth, and Google Gemini AI.
 
 ---
 
-## 🎯 Roadmap
+<div align="center">
 
-- [ ] Google OAuth + JWT authentication
-- [ ] PostgreSQL database for persistent watchlists
-- [ ] Redis caching layer (replace node-cache)
-- [ ] TMDB request queue with p-limit (rate limit management)
-- [ ] TV show detail page (`/tv/:id`)
-- [ ] User reviews and ratings
-- [ ] PWA support (offline mode)
-- [ ] Admin dashboard
+**⭐ Star this repo if you found it useful!**
 
----
+Made with ❤️ and a lot of movies 🎬
 
-## 📜 License
-
-MIT — free to use for personal projects and portfolios.
-
----
-
-<p align="center">Built with ❤️ using React · Node.js · FastAPI · TMDB</p>
+</div>

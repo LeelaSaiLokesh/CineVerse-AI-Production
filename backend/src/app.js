@@ -7,12 +7,13 @@ const morgan = require('morgan');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
 
-const moviesRouter = require('./routes/movies');
-const searchRouter = require('./routes/search');
-const actorsRouter = require('./routes/actors');
+const moviesRouter          = require('./routes/movies');
+const searchRouter          = require('./routes/search');
+const actorsRouter          = require('./routes/actors');
 const recommendationsRouter = require('./routes/recommendations');
-const trendingRouter = require('./routes/trending');
-const discoverRouter = require('./routes/discover');
+const trendingRouter        = require('./routes/trending');
+const discoverRouter        = require('./routes/discover');
+const aiRouter              = require('./routes/ai');
 
 const app = express();
 
@@ -60,12 +61,13 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 // =========================
 
-app.use('/api/movies', moviesRouter);
-app.use('/api/search', searchRouter);
-app.use('/api/actors', actorsRouter);
+app.use('/api/movies',          moviesRouter);
+app.use('/api/search',          searchRouter);
+app.use('/api/actors',          actorsRouter);
 app.use('/api/recommendations', recommendationsRouter);
-app.use('/api/trending', trendingRouter);
-app.use('/api/discover', discoverRouter);
+app.use('/api/trending',        trendingRouter);
+app.use('/api/discover',        discoverRouter);
+app.use('/api/ai',              aiRouter);
 
 // =========================
 // Health check

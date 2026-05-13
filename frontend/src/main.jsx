@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 import { HelmetProvider } from 'react-helmet-async';
 import { WatchlistProvider } from './hooks/useWatchlist';
+import { AuthProvider } from './context/AuthContext';
 import App from './App';
 import './index.css';
 
@@ -24,23 +25,25 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <WatchlistProvider>
-          <BrowserRouter>
-            <App />
-            <Toaster
-              position="bottom-right"
-              toastOptions={{
-                style: {
-                  background: '#13131f',
-                  color: '#e8e8f0',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  borderRadius: '12px',
-                  fontSize: '14px',
-                },
-                success: { iconTheme: { primary: '#4ade80', secondary: '#13131f' } },
-                error:   { iconTheme: { primary: '#f87171', secondary: '#13131f' } },
-              }}
-            />
-          </BrowserRouter>
+          <AuthProvider>
+            <BrowserRouter>
+              <App />
+              <Toaster
+                position="bottom-right"
+                toastOptions={{
+                  style: {
+                    background: '#13131f',
+                    color: '#e8e8f0',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: '12px',
+                    fontSize: '14px',
+                  },
+                  success: { iconTheme: { primary: '#4ade80', secondary: '#13131f' } },
+                  error:   { iconTheme: { primary: '#f87171', secondary: '#13131f' } },
+                }}
+              />
+            </BrowserRouter>
+          </AuthProvider>
         </WatchlistProvider>
       </QueryClientProvider>
     </HelmetProvider>
