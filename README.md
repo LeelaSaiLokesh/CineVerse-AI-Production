@@ -326,3 +326,8 @@ Built as a production-grade portfolio project demonstrating full-stack engineeri
 Made with ❤️ and a lot of movies 🎬
 
 </div>
+
+## ?? AI Chat Status
+
+AI Chat integration with Gemini API is implemented in backend architecture.
+Live deployment may require Google Cloud billing activation for production usage.
